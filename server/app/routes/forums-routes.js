@@ -15,7 +15,10 @@ module.exports = app => {
   app.get('/forums/:forumsID', forums.displayForumsByID);
 
   //user add comments to a post: api is working
-  app.post('/forums/:forumsID', forums.addComment)
+  app.post('/forums/:forumsID', forums.addComment);
+
+  //display all comments for a specific post or forum id
+  //app.get('/forums/thread/:forumsID', forums.displayComments);
 
   //user create a post: api is working
   app.post('/user/forums', forums.createForums);

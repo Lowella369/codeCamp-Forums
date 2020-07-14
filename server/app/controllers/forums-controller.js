@@ -1,30 +1,32 @@
 const Forums = require('../models/forums.js');
 const Comments = require('../models/comments.js');
 
-//Forums controller
-exports.createForums = (request, response) => {
-  if (!request.body) {
-    response.status(400).send({
-      message: 'Enter a valid data!'
+// Forums controller
+exports.createForums = (req, res) => {
+  // Validate request
+  if (!req.body) {
+    res.status(400).send({
+      message: `Enter a valid data!`
     });
   }
 
-  //Creating Post
-  const forum = new Forums({
-    userID: request.body.forum.userID,
-    forumsTitle: request.body.forum.forumsTitle,
-    forumsDescription: request.body.forum.forumsDescription,
+  // Creating Post
+  const forum  = new Forums({
+    userID: req.body.forum.userID,
+    forumsTitle: req.body.forum.forumsTitle,
+    forumsDescription: req.body.forum.forumsDescription,
     forumsDate: new Date()
   });
 
+  console.log("forums:", forum);
+  // Save Post in the database
   Forums.create(forum, (err, data) => {
-    if (err) {
-      response.status(500).send({
-        message: err.message || `Errors occured while inserting data to the table.`
+    if (err)
+    res.status(500).send({
+        message:
+          err.message || `Errors occured while inserting data to the table.`
       });
-    } else {
-      response.send(data);
-    }
+    else res.send(data);
   });
 };
 
