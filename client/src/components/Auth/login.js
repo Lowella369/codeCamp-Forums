@@ -51,9 +51,7 @@ const Login = (props) => {
 
   return (
     <div 
-      class="d-flex justify-content-center w-100 align-items-center" 
-      style={{height: 500}}
-    >
+      className="d-flex justify-content-center w-100 align-items-center login" >
       <Form
         {...layout}
         name="users"

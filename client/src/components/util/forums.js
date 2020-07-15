@@ -38,7 +38,7 @@ export const updateForum = (req) => {
 }
 
 // Query
-export const getAllForums = (req) => {
+export const getAllForumsByUser = (req) => {
   return axios.get(`${SERVER_URL}/forums/user/${req.forum.userID}`).then(res => {
     if (res.status !== 200) {
       return { isSuccess: false };
@@ -50,6 +50,16 @@ export const getAllForums = (req) => {
 
 export const getForum = (req) => {
   return axios.get(`${SERVER_URL}/forums/${req.forum.forumsID}`).then(res => {
+    if (res.status !== 200) {
+      return { isSuccess: false };
+    }
+
+    return { data: res.data, isSuccess: res.status === 200 };
+  });
+}
+
+export const getAllForums = (req) => {
+  return axios.get(`${SERVER_URL}/forums/`).then(res => {
     if (res.status !== 200) {
       return { isSuccess: false };
     }

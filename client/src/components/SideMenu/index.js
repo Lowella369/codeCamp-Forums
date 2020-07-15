@@ -4,7 +4,7 @@ import React from 'react';
 const SideMenu = () => {
   return (
     <nav 
-      className="navbar navbar-dark bg-dark" 
+      className="navbar navbar-light container-fluid" 
       style={{
         alignItems: 'baseline',
         minHeight: "calc(99vh - 160px)",

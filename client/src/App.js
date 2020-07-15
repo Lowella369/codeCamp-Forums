@@ -20,7 +20,7 @@ function App() {
       <Navigation />
       <div className="d-flex">
         <Switch>
-          <Route path="/login" component ={Login} />
+          <Route path="/login" exact component ={Login} />
           <Route path="/signup" component ={SignUp} />
           <Route path="/home" component ={Home} />
           <Route path="/forum" component ={Forum} />

@@ -47,42 +47,44 @@ const CreateForum = (props) => {
   return (
     <Fragment>
       <SideMenu />
-      <div className="d-flex align-items-center w-100 flex-column">
-        <Form
-          name="forums"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          style={{ width: 450}}
-          validateMessages={validateMessages}
-        >
-          <h6 class="d-flex justify-content-center">{formMessage}</h6>
-          <Form.Item
-            label="Title"
-            name={['forum', 'forumsTitle']}
-            rules={[{ required: true }]}
+      <div className="d-flex align-items-center w-100 flex-column container">
+        <div className="forum-container">
+          <Form 
+            name="forums"
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            style={{ width: 450}}
+            validateMessages={validateMessages}
           >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="Description"
-            name={['forum', 'forumsDescription']}
-            rules={[{ required: true }]}
-          >
-            <Input.TextArea rows={10}/>
-          </Form.Item>
-
-          <Form.Item {...tailLayout}>
-            <Button 
-              loading={isSubmitting}
-              type="primary" 
-              htmlType="submit"
+            <h6 class="d-flex justify-content-center">{formMessage}</h6>
+            <Form.Item
+              label="Title"
+              name={['forum', 'forumsTitle']}
+              rules={[{ required: true }]}
             >
-              Save
-            </Button>
-          </Form.Item>
-        </Form>
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Description"
+              name={['forum', 'forumsDescription']}
+              rules={[{ required: true }]}
+            >
+              <Input.TextArea rows={10}/>
+            </Form.Item>
+
+            <Form.Item {...tailLayout}>
+              <Button 
+                loading={isSubmitting}
+                type="primary" 
+                htmlType="submit"
+              >
+                Save
+              </Button>
+            </Form.Item>
+           </Form>
+        </div>
       </div>
     </Fragment>
   );

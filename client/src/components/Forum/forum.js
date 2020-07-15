@@ -2,7 +2,7 @@ import { Col, Row, Popconfirm, message } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
-import { deleteForum, getAllForums } from '../util/forums';
+import { deleteForum, getAllForumsByUser } from '../util/forums';
 import SideMenu from '../SideMenu';
 
 const Forum = (props) => {
@@ -17,7 +17,7 @@ const Forum = (props) => {
   useEffect(() => {
     const fetchForumData = async () => {
       try {
-        let response = await getAllForums({ forum: { userID: parseFloat(isLoggedIn) }});
+        let response = await getAllForumsByUser({ forum: { userID: parseFloat(isLoggedIn) }});
   
         if (Boolean(response.isSuccess)) {
           setForumData(response.data);
@@ -38,16 +38,12 @@ const Forum = (props) => {
   return (
     <Fragment>
       <SideMenu />
-      <div className="d-flex w-100 flex-column">
+      <div className="d-flex w-100 flex-column forums">
         <h6 class="d-flex justify-content-center">{formMessage}</h6>
         {(forumData || []).map(({ forumsID, forumsDescription, forumsTitle }) => {
           return (
             <Fragment>
               <Row className="d-flex flex-column" style={{ padding: 50}}>
-                <Row>
-                  <Col style={{ marginRight: 20}}>Forum Id:</Col>
-                  <Col>{forumsID}</Col>
-                </Row>
                 <Row>
                   <Col style={{ marginRight: 20}}>Forum Title:</Col>
                   <Col>{forumsTitle}</Col>

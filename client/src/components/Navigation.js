@@ -8,8 +8,8 @@ function Navigation(props) {
   return (
     <Fragment>
       <div className="navigation">
-        <nav class="navbar navbar-expand-lg navbar-success bg-success">
-          <div class="container">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
             <Link class="navbar-brand text-white" to="/">
               CodeCamp Community
             </Link>
