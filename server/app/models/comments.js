@@ -36,7 +36,7 @@ Comments.getCommentsByForumsId = (forumsID, result) => {
     }
 
     // Comment id not found
-    result({ kind: 'not_found' }, null);
+    result(null, null);
   });
 };
 
