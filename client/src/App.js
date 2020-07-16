@@ -1,25 +1,44 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import React from "react";
-import { HashRouter, BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom";
-import Navigation from "./components/Navigation.js";
-import Footer from "./components/Footer.js";
+
 import "./App.css";
-
-import Login from "./components/Auth/login";
-import SignUp from "./components/Auth/signup";
-
 import CreateForum from "./components/Forum/createForum";
-import Home from "./components/Home/home";
+import Footer from "./components/Footer.js";
 import Forum from "./components/Forum/forum";
+import Home from "./components/Home/home";
+import Login from "./components/Auth/login";
+import Navigation from "./components/Navigation.js";
+import SignUp from "./components/Auth/signup";
 import UpdateForum from "./components/Forum/updateForum";
 
-function App() {
+function App(props) {
+  const isLoggedIn = localStorage.getItem('USER_ID');
+  const url = window.location.pathname;
+
+  console.log(url);
+  console.log(isLoggedIn);
+
+  if ((url === '/' || url === '/login' || url === '/signup') && Boolean(isLoggedIn)) {
+    props.history.push('/home');
+  }
+  
+  if (
+    (url === '/' || 
+      url === '/home' || 
+      url === '/create' ||
+      url.includes('/forum')
+    ) && !Boolean(isLoggedIn)) {
+    props.history.push('/login');
+  }
 
   return (
-    <HashRouter>
+    <Router>
       <Navigation />
-      <div className="d-flex">
+      <div 
+        className="d-flex App" 
+      >
         <Switch>
-          <Redirect exact path="/" to ="/login" />
           <Route path="/login" component ={Login} />
           <Route path="/signup" component ={SignUp} />
           <Route path="/home" component ={Home} />
@@ -29,8 +48,8 @@ function App() {
         </Switch>
       </div>
       <Footer/>
-    </HashRouter>
+    </Router>
   );
 }
 
-export default App;
+export default withRouter(App);
