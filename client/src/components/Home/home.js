@@ -1,4 +1,4 @@
-import { Col, Row, Popconfirm, message } from 'antd';
+import { Col, Row } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
@@ -7,10 +7,8 @@ import { getAllForums } from '../util/forums';
 import Comment from './comment';
 import SideMenu from '../SideMenu';
 
-const Forum = (props) => {
-  const { history } = props;
+const Forum = () => {
   const [isFetchingData, setFetchingData] = useState(true);
-  const [isSubmitting, setSubmitting] = useState(false);
   const [formMessage, setFormMessage] = useState(null);
   const [forumData, setForumData] = useState(null);
 
@@ -40,7 +38,7 @@ const Forum = (props) => {
   return (
     <Fragment>
       <SideMenu />
-      <div className="d-flex w-100 flex-column">
+      <div className="d-flex w-100 flex-column forum-container">
         <h6 className="d-flex justify-content-center">{formMessage}</h6>
         {(forumData || []).map(({ 
           // forums data
@@ -50,21 +48,24 @@ const Forum = (props) => {
           forumsTitle,
 
           // users data
-          userID,
           userFName,
           userLName,
         }) => {
           return (
             <Fragment key={forumsID}>
-              <Row className="row post-container" style={{ padding: 50}}>
+              <Row className="row post-container">
                 <Row className="col-sm-3 d-flex flex-column">
-                  <Col>Name: {userFName.concat(' ', userLName, ' ')}</Col>
-                  <Col>Created Forum: {new Date(forumsDate).toLocaleDateString()}</Col>
+                  <Col className="comment-name">Created By: {userFName.concat(' ', userLName, ' ')}</Col>
+                  <Col className="comment-name">Date Created: {new Date(forumsDate).toLocaleDateString()}</Col>
                 </Row>
                 <Row className="col-sm-6 d-flex flex-column">
-                  <Col>Title: {forumsTitle}</Col>
-                  <Col>Description: {forumsDescription}</Col>
-                  <Row style={{marginTop: 20}}>
+                  <Row className="post-title">
+                    <Col>Title:</Col><Col className="home-title"> {forumsTitle}</Col>
+                  </Row>
+                  <Row className="post-description">
+                    <Col>Description:</Col><Col className="description"> {forumsDescription}</Col>
+                  </Row>
+                  <Row className="comment">
                     <Col>
                       <Comment forumsID={forumsID} userID={isLoggedIn} />
                     </Col>
@@ -74,7 +75,7 @@ const Forum = (props) => {
             </Fragment>
           );
         })}
-        {(forumData || []).length === 0 && '--'}
+        {(forumData || []).length === 0 && ''}
       </div>
     </Fragment>
   );

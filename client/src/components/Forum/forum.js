@@ -1,4 +1,4 @@
-import { Col, Row, Popconfirm, message } from 'antd';
+import { Col, Row, Popconfirm, Button } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
@@ -8,7 +8,6 @@ import SideMenu from '../SideMenu';
 const Forum = (props) => {
   const { history } = props;
   const [isFetchingData, setFetchingData] = useState(true);
-  const [isSubmitting, setSubmitting] = useState(false);
   const [formMessage, setFormMessage] = useState(null);
   const [forumData, setForumData] = useState(null);
 
@@ -38,56 +37,50 @@ const Forum = (props) => {
   return (
     <Fragment>
       <SideMenu />
-      <div className="d-flex w-100 flex-column forums">
+      <div className="d-flex w-100 flex-column forum-container">
         <h6 className="d-flex justify-content-center">{formMessage}</h6>
         {(forumData || []).map(({ forumsID, forumsDescription, forumsTitle }) => {
           return (
             <Fragment>
-              <Row className="d-flex flex-column" style={{ padding: 50}}>
-                <Row>
-                  <Col style={{ marginRight: 20}}>Forum Title:</Col>
-                  <Col>{forumsTitle}</Col>
+              <Row className="d-flex flex-column post-container">
+                <Row className="post-title">
+                  <Col>Forum Title:</Col>
+                  <Col className="title">{forumsTitle}</Col>
                 </Row>
-                <Row>
-                  <Col style={{ marginRight: 20}}>Forum Description:</Col>
-                  <Col>{forumsDescription}</Col>
+                <Row className="post-description"> 
+                  <Col>Forum Description:</Col>
+                  <Col className="description">{forumsDescription}</Col>
                 </Row>
-                <Row>
-                  <Col 
-                    onClick={() => { history.push(`/forumupdate/${forumsID}`)}} 
-                    style={{ cursor: 'pointer', marginRight: 20}}
-                  >
+                <Row className="btn-center">
+                  <Button className="btn-space " onClick={() => { history.push(`/forumupdate/${forumsID}`)}}>
                     Update
-                  </Col>
-                  <Col style={{ marginRight: 20}}>
-                  <Popconfirm
-                    title="Are you sure delete this forum?"
-                    onConfirm={async () => {
-                        try {
-                          let response = await deleteForum({forum: { forumsID: forumsID }});
+                  </Button>
+                  <Button className="btn-space">
+                  <Popconfirm title="Are you sure delete this forum?" onConfirm={async () => {
+                    try {
+                      let response = await deleteForum({forum: { forumsID: forumsID }});
                     
-                          if (Boolean(response.isSuccess)) {
-                            setFormMessage(`Forum Id ${forumsID} was deleted successfully!`);
-                            setFetchingData(true);
-                          } else {
-                            setFormMessage('An error occurred during server process!');
-                          }
-                        } catch (e) {
-                          console.error(e);
-                        }
-                    }}
+                      if (Boolean(response.isSuccess)) {
+                        setFormMessage(`Forum Id ${forumsID} was deleted successfully!`);
+                        setFetchingData(true);
+                      } else {
+                        setFormMessage('An error occurred during server process!');
+                      }
+                    } catch (e) {
+                      console.error(e);
+                    }
+                  }}
                     okText="Yes"
-                    cancelText="No"
-                  >
-                    <a href="#">Delete</a>
+                    cancelText="No">
+                    Delete
                   </Popconfirm>
-                  </Col>
+                  </Button>
                 </Row>
               </Row>
             </Fragment>
           );
         })}
-        {(forumData || []).length === 0 && '--'}
+        {(forumData || []).length === 0 && ''}
       </div>
     </Fragment>
   );

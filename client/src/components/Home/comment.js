@@ -34,7 +34,7 @@ const Comment = (props) => {
     if (isFetchingData) {
       fetchCommentData();
     }
-  }, [isFetchingData]);
+  });
 
   const onFinish = async values => {
     setSubmitting(true);
@@ -59,9 +59,9 @@ const Comment = (props) => {
 
   return (
     <Fragment>
-      <Row className="d-flex flex-column" style={{marginBottom: 20}}>
-        {(commentData || []).length === 0 && 'No Comments Yet!'}
-        {(commentData || []).length > 0 && <Col style={{fontWeight: 700}}>List of Comments</Col>}
+      <Row className="d-flex flex-column"  style={{marginBottom: 20}}>
+        {(commentData || []).length === 0 && <Col className="comment-header">No Comments Yet!</Col>}
+        {(commentData || []).length > 0 && <Col className="comment-header">List of Comments</Col>}
         {(commentData || []).map(({
           // comments
           commentsID,
@@ -73,34 +73,39 @@ const Comment = (props) => {
           userLName,
         }) => {
           return (
-            <Row className="d-flex flex-column" key={commentsID} style={{padding: 10}}>
+            <Row className="d-flex flex-column comment-list" key={commentsID}>
               <Row>
-                <Col>{userFName.concat(' ', userLName).concat(' ', format('Pp')(new Date(commentsDate)))}</Col>
+                <Col className="comment-name">{userFName.concat(' ', userLName).concat(' ', format('Pp')(new Date(commentsDate)))}</Col>
               </Row>
               <Row style={{marginLeft: 10}}>
-                <Col>{commentsDescription}</Col>
+                <Col className="comment-item">{commentsDescription}</Col>
               </Row>
             </Row>
           );
         })}
       </Row>
       <Row>
-        <Col 
-          onClick={() => {
-            setCommenting(true);
-          }}
-          style={{cursor: 'pointer'}}
-        >
-          {!isCommenting && <Col style={{textDecoration: 'underline'}}>Comment Now</Col>}
-          {isCommenting && (
-            <Fragment>
-              <Form 
-                initialValues={{ remember: true }}
-                name="forums"
-                onFinish={onFinish}
-                style={{ width: 450}}
-                validateMessages={validateMessages}
-              >
+        {!isCommenting && (
+          <Col>
+            <Button className="btn-space"
+              onClick={() => {
+                setCommenting(true);
+              }}
+            >
+              Comment Now
+            </Button>
+          </Col>
+        )}
+        {isCommenting && (
+          <Col>
+            <Form 
+              initialValues={{ remember: true, setCommenting: setCommenting }}
+              name="forums"
+              onFinish={onFinish}
+              style={{ width: 450}}
+              validateMessages={validateMessages}
+            >
+              <Fragment>
                 <Form.Item
                   name={['comment', 'commentsDescription']}
                   rules={[{ required: true }]}
@@ -108,18 +113,24 @@ const Comment = (props) => {
                   <Input.TextArea rows={3}/>
                 </Form.Item>
                 <Form.Item>
-                  <Button 
+                  <Button className="btn-space"
                     loading={isSubmitting}
                     htmlType="submit"
-                    type="primary" 
                   >
                     Save
                   </Button>
+                  <Button className="btn-space"
+                    onClick={() => {
+                      setCommenting(false);
+                    }}
+                  >
+                    Cancel
+                  </Button>
                 </Form.Item>
-              </Form>
-            </Fragment>
-          )}
-        </Col>
+              </Fragment>
+            </Form>
+          </Col>
+        )}
       </Row>
     </Fragment>
   );

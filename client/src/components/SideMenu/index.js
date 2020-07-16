@@ -4,10 +4,9 @@ import React from 'react';
 const SideMenu = () => {
   return (
     <nav 
-      className="navbar navbar-light container-fluid" 
+      className="navbar container-fluid position-fixed" 
       style={{
         alignItems: 'baseline',
-        minHeight: "calc(99vh - 160px)",
         maxWidth: 300
       }}
     >

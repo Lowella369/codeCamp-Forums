@@ -35,9 +35,7 @@ function App(props) {
   return (
     <Router>
       <Navigation />
-      <div 
-        className="d-flex App" 
-      >
+      <div className="d-flex App" >
         <Switch>
           <Route path="/login" component ={Login} />
           <Route path="/signup" component ={SignUp} />

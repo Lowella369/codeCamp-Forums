@@ -41,8 +41,6 @@ const UpdateForum = (props) => {
     }
   });
 
-  const title = forumData?.forumsTitle || '';
-
   const onFinish = async values => {
     setSubmitting(true);
     values.forum.forumsID = parseFloat(match.params.id);
@@ -70,48 +68,55 @@ const UpdateForum = (props) => {
   return (
     <Fragment>
       <SideMenu />
-      <div className="d-flex align-items-center w-100 flex-column">
+      <div className="d-flex align-items-center w-100 flex-column forum-container">
         {!Boolean(isFetchingData) && (
-          <Form
-            name="forums"
-            initialValues={{ 
-              remember: true, 
-              forum: { 
-                forumsDescription: forumData.forumsDescription,
-                forumsTitle: forumData.forumsTitle,
-              } }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            style={{ width: 450}}
-            validateMessages={validateMessages}
-          >
-            <h6 className="d-flex justify-content-center">{formMessage}</h6>
-            <Form.Item
-              label="Title"
-              name={['forum', 'forumsTitle']}
-              rules={[{ required: true }]}
+          <div className="post-container">
+            <Form className="post"
+              initialValues={{ 
+                remember: true, 
+                forum: { 
+                  forumsDescription: forumData.forumsDescription,
+                  forumsTitle: forumData.forumsTitle,
+                } }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              validateMessages={validateMessages}
             >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              label="Description"
-              name={['forum', 'forumsDescription']}
-              rules={[{ required: true }]}
-            >
-              <Input.TextArea rows={10} />
-            </Form.Item>
-
-            <Form.Item {...tailLayout}>
-              <Button 
-                loading={isSubmitting}
-                type="primary" 
-                htmlType="submit"
+              <h6 className="d-flex justify-content-center">{formMessage}</h6>
+              <Form.Item
+                label="Title"
+                name={['forum', 'forumsTitle']}
+                rules={[{ required: true }]}
               >
-                Update
-              </Button>
-            </Form.Item>
-          </Form>
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Description"
+                name={['forum', 'forumsDescription']}
+                rules={[{ required: true }]}
+              >
+                <Input.TextArea rows={10} />
+              </Form.Item>
+
+              <Form.Item {...tailLayout}>
+                <Button className="btn-space"
+                  loading={isSubmitting}
+                  htmlType="submit"
+                >
+                  Update
+                </Button>
+                <Button className="btn-space"
+                  onClick={() => {
+                    history.push('/forum')
+                  }}
+                  style={{marginLeft: 10}}
+                >
+                  Cancel
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
         )}
       </div>
     </Fragment>

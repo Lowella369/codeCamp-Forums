@@ -47,14 +47,13 @@ const CreateForum = (props) => {
   return (
     <Fragment>
       <SideMenu />
-      <div className="d-flex align-items-center w-100 flex-column">
-        <div className="forum-container">
-          <Form 
+      <div className="d-flex align-items-center w-100 flex-column forum-container">
+        <div className="post-container">
+          <Form className="post"
             name="forums"
             initialValues={{ remember: true }}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
-            style={{ width: 450}}
             validateMessages={validateMessages}
           >
             <h6 className="d-flex justify-content-center">{formMessage}</h6>
@@ -74,15 +73,23 @@ const CreateForum = (props) => {
               <Input.TextArea rows={10}/>
             </Form.Item>
 
-            <Form.Item {...tailLayout}>
-              <Button 
-                loading={isSubmitting}
-                type="primary" 
-                htmlType="submit"
-              >
-                Save
-              </Button>
-            </Form.Item>
+            <div className="btn-center">
+              <Form.Item {...tailLayout}>
+                <Button className="btn-space"
+                  loading={isSubmitting}
+                  htmlType="submit"
+                >
+                  Save
+                </Button>
+                <Button className="btn-space"
+                  onClick={() => {
+                    history.push('/forum');
+                  }}
+                >
+                  Cancel
+                </Button>
+              </Form.Item>
+            </div>
            </Form>
         </div>
       </div>
