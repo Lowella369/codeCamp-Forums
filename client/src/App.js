@@ -1,9 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch, Link  } from "react-router-dom";
+import { HashRouter, BrowserRouter as Router, Route, Switch, Redirect  } from "react-router-dom";
 import Navigation from "./components/Navigation.js";
 import Footer from "./components/Footer.js";
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import Login from "./components/Auth/login";
 import SignUp from "./components/Auth/signup";
@@ -16,11 +15,12 @@ import UpdateForum from "./components/Forum/updateForum";
 function App() {
 
   return (
-    <Router>
+    <HashRouter>
       <Navigation />
       <div className="d-flex">
         <Switch>
-          <Route path="/login" exact component ={Login} />
+          <Redirect exact path="/" to ="/login" />
+          <Route path="/login" component ={Login} />
           <Route path="/signup" component ={SignUp} />
           <Route path="/home" component ={Home} />
           <Route path="/forum" component ={Forum} />
@@ -29,7 +29,7 @@ function App() {
         </Switch>
       </div>
       <Footer/>
-    </Router>
+    </HashRouter>
   );
 }
 
