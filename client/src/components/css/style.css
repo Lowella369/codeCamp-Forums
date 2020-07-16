@@ -22,8 +22,11 @@ body {
   margin-right: 1rem;
 }
 .login {
+  height: 28.5rem;
+}
+.signup {
   height: 35rem;
-  margin-bottom: 10rem;
+  margin-bottom: 8.5rem;
 }
 
 @media only screen and (min-width: 768px) {

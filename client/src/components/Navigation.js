@@ -8,16 +8,16 @@ function Navigation(props) {
   return (
     <Fragment>
       <div className="navigation">
-        <nav class="navbar navbar-expand-lg">
-          <div class="container-fluid">
-            <Link class="navbar-brand text-white" to="/">
+        <nav className="navbar navbar-expand-lg">
+          <div className="container-fluid">
+            <Link className="navbar-brand text-white" to="/">
               CodeCamp Community
             </Link>
-              <ul class="navbar-nav ml-auto">
+              <ul className="navbar-nav ml-auto">
                 {Boolean(isLoggedIn) && (
-                  <li class={`d-flex align-items-center nav-item ${props.location.pathname === "/login" ? "active" : ""}`}>
+                  <li className={`d-flex align-items-center nav-item ${props.location.pathname === "/login" ? "active" : ""}`}>
                     Welcome {userName}{'! '}
-                    <Link class="nav-link text-white" to="/login" onClick={() => {
+                    <Link className="nav-link text-white" to="/login" onClick={() => {
                       localStorage.setItem('USER_ID', '');
                     }}>
                       Log Out
@@ -26,11 +26,11 @@ function Navigation(props) {
                 )}
                 {!Boolean(isLoggedIn) && (
                   <Fragment>
-                    <li class={`nav-item ${props.location.pathname === "/login" ? "active" : ""}`}>
-                      <Link class="nav-link text-white" to="/login">Log in</Link>
+                    <li className={`nav-item ${props.location.pathname === "/login" ? "active" : ""}`}>
+                      <Link className="nav-link text-white" to="/login">Log in</Link>
                     </li>
-                    <li class={`nav-item ${props.location.pathname === "/signup" ? "active" : "" }`}>
-                      <Link class="nav-link text-white" to="/signup">
+                    <li className={`nav-item ${props.location.pathname === "/signup" ? "active" : "" }`}>
+                      <Link className="nav-link text-white" to="/signup">
                         Sign up
                       </Link>
                     </li>

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import React, { useState } from 'react';
 
 import { signupUser } from '../util/users';
+import '../css/style.css';
 
 const layout = {
   labelCol: { span: 8 },
@@ -51,7 +52,8 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="d-flex justify-content-center w-100">
+    <div className="d-flex justify-content-center w-100 forum-container">
+      <div className="signup">
       <Form
         {...layout}
         name="users"
@@ -60,7 +62,7 @@ const SignUp = (props) => {
         onFinishFailed={onFinishFailed}
         validateMessages={validateMessages}
       >
-        <h6 class="d-flex justify-content-center">{formMessage}</h6>
+        <h6 className="d-flex justify-content-center">{formMessage}</h6>
         <Form.Item
           label="Firstname"
           name={['user', 'userFName']}
@@ -103,6 +105,8 @@ const SignUp = (props) => {
           </Button>
         </Form.Item>
       </Form>
+      </div>
+      
     </div>
   );
 };

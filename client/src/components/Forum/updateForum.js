@@ -85,7 +85,7 @@ const UpdateForum = (props) => {
             style={{ width: 450}}
             validateMessages={validateMessages}
           >
-            <h6 class="d-flex justify-content-center">{formMessage}</h6>
+            <h6 className="d-flex justify-content-center">{formMessage}</h6>
             <Form.Item
               label="Title"
               name={['forum', 'forumsTitle']}

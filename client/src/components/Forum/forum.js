@@ -39,7 +39,7 @@ const Forum = (props) => {
     <Fragment>
       <SideMenu />
       <div className="d-flex w-100 flex-column forums">
-        <h6 class="d-flex justify-content-center">{formMessage}</h6>
+        <h6 className="d-flex justify-content-center">{formMessage}</h6>
         {(forumData || []).map(({ forumsID, forumsDescription, forumsTitle }) => {
           return (
             <Fragment>

@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import React, { useState } from 'react';
 
 import { loginUser } from '../util/users';
+import '../css/style.css';
 
 const layout = {
   labelCol: { span: 8 },
@@ -51,8 +52,9 @@ const Login = (props) => {
 
   return (
     <div 
-      className="d-flex justify-content-center w-100 align-items-center login" >
-      <Form
+      className="d-flex justify-content-center w-100 align-items-center forum-container">
+        <div className="login">
+        <Form
         {...layout}
         name="users"
         initialValues={{ remember: true }}
@@ -60,7 +62,7 @@ const Login = (props) => {
         onFinishFailed={onFinishFailed}
         validateMessages={validateMessages}
       >
-        <h6 class="d-flex justify-content-center">{formMessage}</h6>
+        <h6 className="d-flex justify-content-center">{formMessage}</h6>
         <Form.Item
           label="Email"
           name={['user', 'userEmail']}
@@ -87,6 +89,7 @@ const Login = (props) => {
           </Button>
         </Form.Item>
       </Form>
+        </div>
     </div>
   );
 };

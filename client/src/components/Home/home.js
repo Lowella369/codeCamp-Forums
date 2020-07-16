@@ -2,9 +2,10 @@ import { Col, Row, Popconfirm, message } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
-import { getAllForums } from '../util/forums';
-import SideMenu from '../SideMenu';
 import '../css/style.css';
+import { getAllForums } from '../util/forums';
+import Comment from './comment';
+import SideMenu from '../SideMenu';
 
 const Forum = (props) => {
   const { history } = props;
@@ -40,16 +41,34 @@ const Forum = (props) => {
     <Fragment>
       <SideMenu />
       <div className="d-flex w-100 flex-column">
-        <h6 class="d-flex justify-content-center">{formMessage}</h6>
-        {(forumData || []).map(({ forumsID, forumsDescription, forumsTitle }) => {
+        <h6 className="d-flex justify-content-center">{formMessage}</h6>
+        {(forumData || []).map(({ 
+          // forums data
+          forumsID, 
+          forumsDate, 
+          forumsDescription, 
+          forumsTitle,
+
+          // users data
+          userID,
+          userFName,
+          userLName,
+        }) => {
           return (
-            <Fragment>
-              <Row className="d-flex flex-column post-container" style={{ padding: 50}}>
-                <Row>
-                  <Col>{forumsTitle}</Col>
+            <Fragment key={forumsID}>
+              <Row className="row post-container" style={{ padding: 50}}>
+                <Row className="col-sm-3 d-flex flex-column">
+                  <Col>Name: {userFName.concat(' ', userLName, ' ')}</Col>
+                  <Col>Created Forum: {new Date(forumsDate).toLocaleDateString()}</Col>
                 </Row>
-                <Row>
-                  <Col>View Post</Col>
+                <Row className="col-sm-6 d-flex flex-column">
+                  <Col>Title: {forumsTitle}</Col>
+                  <Col>Description: {forumsDescription}</Col>
+                  <Row style={{marginTop: 20}}>
+                    <Col>
+                      <Comment forumsID={forumsID} userID={isLoggedIn} />
+                    </Col>
+                  </Row>
                 </Row>
               </Row>
             </Fragment>

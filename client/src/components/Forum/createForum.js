@@ -47,7 +47,7 @@ const CreateForum = (props) => {
   return (
     <Fragment>
       <SideMenu />
-      <div className="d-flex align-items-center w-100 flex-column container">
+      <div className="d-flex align-items-center w-100 flex-column">
         <div className="forum-container">
           <Form 
             name="forums"
@@ -57,7 +57,7 @@ const CreateForum = (props) => {
             style={{ width: 450}}
             validateMessages={validateMessages}
           >
-            <h6 class="d-flex justify-content-center">{formMessage}</h6>
+            <h6 className="d-flex justify-content-center">{formMessage}</h6>
             <Form.Item
               label="Title"
               name={['forum', 'forumsTitle']}

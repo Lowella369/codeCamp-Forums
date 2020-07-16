@@ -8,7 +8,7 @@ const SideMenu = () => {
       style={{
         alignItems: 'baseline',
         minHeight: "calc(99vh - 160px)",
-        minWidth: 200
+        maxWidth: 300
       }}
     >
       <div className="navbar-nav mr-auto">
