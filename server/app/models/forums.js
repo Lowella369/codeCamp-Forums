@@ -22,7 +22,7 @@ Forums.create = (newForums, result) => {
 };
 
 Forums.getAllForums = result => {
-  sql.query('SELECT * FROM forums', (err, res) => {
+  sql.query('SELECT forums.*, users.* from forums LEFT JOIN users on forums.userID = users.userID ORDER BY forumsDate DESC', (err, res) => {
     if (err) {
       console.log('error:', err);
       result(null, err);
@@ -53,7 +53,7 @@ Forums.getForumsByID = (forumsID, result) => {
 };
 
 Forums.getPostbyUser = (userID, result) => {
-  sql.query(`SELECT * FROM forums WHERE userID = ${userID}`, (err, res) => {
+  sql.query(`SELECT * FROM forums WHERE userID = ${userID} ORDER BY forumsDate DESC`, (err, res) => {
     if (err) {
       console.log('error:', err);
       result(null, err);

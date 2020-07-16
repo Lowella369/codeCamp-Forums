@@ -150,11 +150,10 @@ exports.addComment = (request, response) => {
 
   // Creating Comments
   const comments  = new Comments({
-    commentsID: request.body.commentsID,
-    forumsID: request.body.forumsID,
-    userID: request.body.userID,
-    commentsDescription: request.body.commentsDescription,
-    commentsDate: request.body.commentsDate
+    forumsID: request.body.comment.forumsID,
+    userID: request.body.comment.userID,
+    commentsDescription: request.body.comment.commentsDescription,
+    commentsDate: new Date(),
   });
 
   // Save Post in the database
@@ -165,5 +164,23 @@ exports.addComment = (request, response) => {
           err.message || `Errors occured while inserting data to the table.`
       });
     else response.send(data);
+  });
+};
+
+exports.displayCommentByForumId = (request, response) => {
+  Comments.getCommentsByForumsId(request.params.forumsID, (err, data) => {
+    if (err) {
+      if (err.kind === 'not_found') {
+        response.status(404).send({
+          message: `Post id ${request.params.forumsID}.`
+        });
+      } else {
+        response.status(500).send({
+          message: `Unable to retrieve data for post id ${request.params.forumsID}`
+        });
+      }
+    } else {
+      response.send(data);
+    }
   });
 };

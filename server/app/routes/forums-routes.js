@@ -18,7 +18,7 @@ module.exports = app => {
   app.post('/forums/:forumsID', forums.addComment);
 
   //display all comments for a specific post or forum id
-  //app.get('/forums/thread/:forumsID', forums.displayComments);
+  app.get('/forums/thread/:forumsID', forums.displayCommentByForumId);
 
   //user create a post: api is working
   app.post('/user/forums', forums.createForums);
@@ -33,5 +33,4 @@ module.exports = app => {
   
   app.delete('/user/forums', forums.deleteAllForums);
 
-  app.get('/test', user.getTest);
 }

@@ -20,4 +20,24 @@ Comments.saveComments = (newComments, result) => {
   });
 };
 
+Comments.getCommentsByForumsId = (forumsID, result) => {
+  sql.query(`SELECT users.*, comments.* FROM comments LEFT JOIN users ON users.userID = comments.userID
+    WHERE comments.forumsID = ${forumsID}`, (err, res) => {
+    if (err) {
+      console.log('error: ', err);
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log('Comment found', res);
+      result(null, res);
+      return;
+    }
+
+    // Comment id not found
+    result({ kind: 'not_found' }, null);
+  });
+};
+
 module.exports = Comments;
