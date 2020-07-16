@@ -34,7 +34,7 @@ Forums.getAllForums = result => {
 };
 
 Forums.getForumsByID = (forumsID, result) => {
-  sql.query(`SELECT * FROM forums WHERE forumsID = ${forumsID}`, (err, res) => {
+  sql.query(`SELECT forums.*, users.* from forums LEFT JOIN users on forums.userID = users.userID WHERE forumsID = ${forumsID}`, (err, res) => {
     if (err) {
       console.log('error: ', err);
       result(err, null);
