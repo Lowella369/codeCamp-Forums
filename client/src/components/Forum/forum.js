@@ -80,7 +80,7 @@ const Forum = (props) => {
             </Fragment>
           );
         })}
-        {(forumData || []).length === 0 && ''}
+        {(forumData || []).length === 0 && <Col className="inform-text">You don't have any post yet</Col>}
       </div>
     </Fragment>
   );

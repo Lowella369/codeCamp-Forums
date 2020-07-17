@@ -51,41 +51,27 @@ const Login = (props) => {
 
   return (
     <div className="d-flex justify-content-center w-100 align-items-center forum-container ">
-      <div className="post-container">
-        <Form className="auth"
-          {...layout}
-          name="users"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          validateMessages={validateMessages}
-        >
-          <h6 className="d-flex justify-content-center">{formMessage}</h6>
-          <Form.Item
-            label="Email"
-            name={['user', 'userEmail']}
-            rules={[{ required: true, type: 'email' }]}
-          >
-            <Input />
-          </Form.Item>
+      <div className="auth-center">
+        <div className="post-container">
+          <Form className="auth" {...layout} name="users" initialValues={{ remember: true }}
+            onFinish={onFinish} onFinishFailed={onFinishFailed} validateMessages={validateMessages}>
+            <h6 className="d-flex justify-content-center">{formMessage}</h6>
 
-          <Form.Item
-            label="Password"
-            name={['user', 'userPassword']}
-            rules={[{ required: true }]}
-          >
-            <Input.Password />
-          </Form.Item>
+            <Form.Item  label="Email" name={['user', 'userEmail']} rules={[{ required: true, type: 'email' }]} >
+              <Input />
+            </Form.Item>
 
-          <Form.Item {...tailLayout}>
-            <Button className="btn-space"
-              loading={isSubmitting}
-              htmlType="submit"
-            >
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
+            <Form.Item label="Password" name={['user', 'userPassword']} rules={[{ required: true }]} >
+              <Input.Password />
+            </Form.Item>
+
+            <Form.Item {...tailLayout}>
+              <Button className="btn-space" loading={isSubmitting}  htmlType="submit" >
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ body {
   background-color: #1A8460;
   color: #fff;
 }
-
 .post {
   width: 100%;
 }
@@ -54,9 +53,6 @@ body {
   padding-left: .5rem;
   padding-bottom: .2rem;
 }
-.post-detail {
-  width: 50%;
-}
 .comment-header {
   font-weight: bolder;
   margin-top: 1rem;
@@ -73,24 +69,14 @@ body {
   margin-top: .5rem;
   margin-bottom: 1rem;
 }
-.comment-bottom {
-  margin-bottom: 2rem;
-}
-.hamburger-menu {
-  border: solid whitesmoke;
-}
-.comment-list {
-  padding: .9rem;
-}
-a{
+a {
   color:white;
 }
-.dropdown-menu
-{
+.dropdown-menu {
   background-color: #1A8460;
+  border: none;
 }
-.navItemCustom
-{
+.navItemCustom {
   position: relative;
   top: 8px;
 }
@@ -101,30 +87,22 @@ a{
   border-top: solid .2rem #1A8460;
   color: #fff;
 }
-.cont-box {
-  display: flex;
-  border: outset .1rem #a19f9f;
-  margin-right: 5rem;
-  margin-bottom: 10rem;
-  margin-bottom: 12rem;
-  padding: 5rem 10rem 2rem 10rem;
-  box-shadow: .5rem .5rem .5rem .2rem #a19f9f;
-}
 .forum-container {
   margin-top: 5rem;
   padding: 1rem;
+}
+.auth-center {
+  margin-top: 4rem;
+}
+.comment-box {
+  width: 28.7rem;
+  margin-left: 3rem;
 }
 .post-container {
   padding: 1rem;
   margin-bottom: 1rem;
   border: ridge .1rem #dfdddd;
   box-shadow: .5rem .5rem .5rem .2rem #a19f9f;
-}
-.login {
-  height: 30.5rem;
-}
-.signup {
-  height: 45.5rem;
 }
 .btn-center {
   margin-top: 1rem;
@@ -136,6 +114,14 @@ a{
   background: #18A558;
   color: #fff;
   cursor: pointer;
+}
+.comment-button {
+  text-align: center;
+}
+.inform-text {
+  text-align: center;
+  font-size: 3rem;
+  color: #18A558;
 }
 
 @media only screen and (min-width: 768px) {

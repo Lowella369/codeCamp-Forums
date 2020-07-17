@@ -74,7 +74,7 @@ const Forum = () => {
             </Fragment>
           );
         })}
-        {(forumData || []).length === 0 && ''}
+        {(forumData || []).length === 0 && <Col className="inform-text">No Post to display yet</Col>}
       </div>
     </Fragment>
   );

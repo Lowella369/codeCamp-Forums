@@ -88,45 +88,30 @@ const Comment = (props) => {
       <Row>
         {!isCommenting && (
           <Col>
-            <Button className="btn-space"
-              onClick={() => {
-                setCommenting(true);
-              }}
-            >
+            <Button className="btn-space" onClick={() => { setCommenting(true); }}>
               Comment Now
             </Button>
           </Col>
         )}
         {isCommenting && (
           <Col>
-            <Form 
-              initialValues={{ remember: true, setCommenting: setCommenting }}
-              name="forums"
-              onFinish={onFinish}
-              style={{ width: 450}}
-              validateMessages={validateMessages}
-            >
+            <Form initialValues={{ remember: true, setCommenting: setCommenting }} name="forums"
+              onFinish={onFinish} validateMessages={validateMessages}>
               <Fragment>
-                <Form.Item
+                <Form.Item className="comment-box"
                   name={['comment', 'commentsDescription']}
-                  rules={[{ required: true }]}
-                >
+                  rules={[{ required: true }]}>
                   <Input.TextArea rows={3}/>
                 </Form.Item>
-                <Form.Item>
-                  <Button className="btn-space"
-                    loading={isSubmitting}
-                    htmlType="submit"
-                  >
-                    Save
-                  </Button>
-                  <Button className="btn-space"
-                    onClick={() => {
-                      setCommenting(false);
-                    }}
-                  >
-                    Cancel
-                  </Button>
+                <Form.Item >
+                  <div className="comment-button">
+                    <Button className="btn-space" loading={isSubmitting} htmlType="submit">
+                      Save
+                    </Button>
+                    <Button className="btn-space" onClick={() => {setCommenting(false);}}>
+                      Cancel
+                    </Button>
+                  </div>
                 </Form.Item>
               </Fragment>
             </Form>

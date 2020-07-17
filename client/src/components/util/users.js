@@ -18,7 +18,6 @@ export const signupUser = (req) => {
   return axios.post(`${SERVER_URL}/user/signup`, {
     user: req.user,
   }).then(res => {
-    console.log(res);
     if (res.status !== 200 || res.data?.userInfo?.userEmail === req.user?.userEmail) {
       return { isSuccess: false, emailExists: res.data.userInfo.userEmail === req.user.userEmail };
     }
