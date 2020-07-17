@@ -32,7 +32,6 @@ Users.createUser = (newUser, result) => {
             return;
           }
     
-          console.log('created User: ', {userID: res.insertId, ...newUser });
           result(null, {userID: res.insertId, ...newUser });
         });
       }
@@ -49,7 +48,6 @@ Users.loginUser = (user, result) => {
         return;
       }
 
-      console.log(res);
       let response = [];
 
       if (res.length > 0 ) {

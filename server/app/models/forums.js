@@ -16,7 +16,6 @@ Forums.create = (newForums, result) => {
       return;
     }
 
-    console.log('Post created: ', {forumsID: res.insertId, ...newForums });
     result(null, {forumsID: res.insertId, ...newForums });
   });
 };
@@ -28,7 +27,6 @@ Forums.getAllForums = result => {
       result(null, err);
       return;
     }
-    console.log('Posts: ', res);
     result(null, res);
   });
 };
@@ -42,7 +40,6 @@ Forums.getForumsByID = (forumsID, result) => {
     }
 
     if (res.length) {
-      console.log('Post found', res[0]);
       result(null, res[0]);
       return;
     }
@@ -59,7 +56,6 @@ Forums.getPostbyUser = (userID, result) => {
       result(null, err);
       return;
     }
-    console.log('Posts: ', res);
     result(null, res);
   });
 };
@@ -81,7 +77,6 @@ Forums.updateForumsByID = (forumsID, forums, result) => {
         return;
       }
 
-      console.log('Post updated: ', { id: forumsID, ...forums });
       result(null, { id: forumsID, ...forums });
     }
   );
@@ -101,7 +96,6 @@ Forums.deleteForumsByID = (forumsID, result) => {
       return;
     }
 
-    console.log('deleted post id: ', forumsID);
     result(null, res);
   });
 };
@@ -113,7 +107,6 @@ Forums.deleteAllForums = result => {
       result(null, err);
       return;
     }
-    console.log(`Deleted ${res.affectedRows} forums`);
     result(null, res);
   });
 };

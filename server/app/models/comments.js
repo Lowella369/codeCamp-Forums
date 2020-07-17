@@ -15,7 +15,6 @@ Comments.saveComments = (newComments, result) => {
       result(err, null);
       return;
     }
-    console.log('Comments posted: ', {commentsID: res.insertId, ...newComments});
     result(null, {userID: res.insertId, ...newComments});
   });
 };
@@ -30,7 +29,6 @@ Comments.getCommentsByForumsId = (forumsID, result) => {
     }
 
     if (res.length) {
-      console.log('Comment found', res);
       result(null, res);
       return;
     }

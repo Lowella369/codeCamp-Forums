@@ -18,7 +18,6 @@ exports.createForums = (req, res) => {
     forumsDate: new Date()
   });
 
-  console.log("forums:", forum);
   // Save Post in the database
   Forums.create(forum, (err, data) => {
     if (err)
