@@ -50,7 +50,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="d-flex justify-content-center w-100 align-items-center">
+    <div className="d-flex justify-content-center w-100 align-items-center forum-container ">
       <div className="post-container">
         <Form className="auth"
           {...layout}

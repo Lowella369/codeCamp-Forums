@@ -37,7 +37,6 @@ const Forum = () => {
 
   return (
     <Fragment>
-      <SideMenu />
       <div className="d-flex w-100 flex-column forum-container">
         <h6 className="d-flex justify-content-center">{formMessage}</h6>
         {(forumData || []).map(({ 
@@ -63,7 +62,7 @@ const Forum = () => {
                     <Col>Title:</Col><Col className="home-title"> {forumsTitle}</Col>
                   </Row>
                   <Row className="post-description">
-                    <Col>Description:</Col><Col className="description"> {forumsDescription}</Col>
+                    <Col>Description:</Col><Col className="home-description"> {forumsDescription}</Col>
                   </Row>
                   <Row className="comment">
                     <Col>

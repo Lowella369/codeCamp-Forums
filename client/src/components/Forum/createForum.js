@@ -46,10 +46,9 @@ const CreateForum = (props) => {
 
   return (
     <Fragment>
-      <SideMenu />
-      <div className="d-flex align-items-center w-100 flex-column forum-container">
+      <div className="forum-container">
         <div className="post-container">
-          <Form className="post"
+          <Form 
             name="forums"
             initialValues={{ remember: true }}
             onFinish={onFinish}

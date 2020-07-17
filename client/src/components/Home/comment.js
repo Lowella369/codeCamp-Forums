@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
 import { createComment, getComments } from '../util/comments';
+import "../css/style.css";
 
 const validateMessages = {
   required: 'Comment is required!',
@@ -59,7 +60,7 @@ const Comment = (props) => {
 
   return (
     <Fragment>
-      <Row className="d-flex flex-column"  style={{marginBottom: 20}}>
+      <Row className="d-flex flex-column ">
         {(commentData || []).length === 0 && <Col className="comment-header">No Comments Yet!</Col>}
         {(commentData || []).length > 0 && <Col className="comment-header">List of Comments</Col>}
         {(commentData || []).map(({
@@ -73,11 +74,11 @@ const Comment = (props) => {
           userLName,
         }) => {
           return (
-            <Row className="d-flex flex-column comment-list" key={commentsID}>
+            <Row className="col-sm-12 flex-column comment" key={commentsID}>
               <Row>
                 <Col className="comment-name">{userFName.concat(' ', userLName).concat(' ', format('Pp')(new Date(commentsDate)))}</Col>
               </Row>
-              <Row style={{marginLeft: 10}}>
+              <Row >
                 <Col className="comment-item">{commentsDescription}</Col>
               </Row>
             </Row>

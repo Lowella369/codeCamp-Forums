@@ -67,8 +67,7 @@ const UpdateForum = (props) => {
 
   return (
     <Fragment>
-      <SideMenu />
-      <div className="d-flex align-items-center w-100 flex-column forum-container">
+      <div className="forum-container">
         {!Boolean(isFetchingData) && (
           <div className="post-container">
             <Form className="post"

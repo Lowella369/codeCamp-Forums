@@ -36,7 +36,6 @@ const Forum = (props) => {
 
   return (
     <Fragment>
-      <SideMenu />
       <div className="d-flex w-100 flex-column forum-container">
         <h6 className="d-flex justify-content-center">{formMessage}</h6>
         {(forumData || []).map(({ forumsID, forumsDescription, forumsTitle }) => {
@@ -56,12 +55,13 @@ const Forum = (props) => {
                     Update
                   </Button>
                   <Button className="btn-space">
-                  <Popconfirm title="Are you sure delete this forum?" onConfirm={async () => {
+                  <Popconfirm title="Are you sure delete this forum?" onCancel={() => {
+                    setFormMessage(``); }}  onConfirm={async () => {
                     try {
                       let response = await deleteForum({forum: { forumsID: forumsID }});
                     
                       if (Boolean(response.isSuccess)) {
-                        setFormMessage(`Forum Id ${forumsID} was deleted successfully!`);
+                        setFormMessage(`Forum was deleted successfully!`);
                         setFetchingData(true);
                       } else {
                         setFormMessage('An error occurred during server process!');
