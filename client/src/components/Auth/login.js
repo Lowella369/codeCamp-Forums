@@ -2,7 +2,7 @@ import { Form, Input, Button } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { useState } from 'react';
 
-import { loginUser } from '../util/users';
+import { loginUser } from './util/users';
 
 const layout = {
   labelCol: { span: 8 },

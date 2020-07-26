@@ -2,8 +2,7 @@ import { Col, Row, Popconfirm, Button } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
-import { deleteForum, getAllForumsByUser } from '../util/forums';
-import SideMenu from '../SideMenu';
+import { deleteForum, getAllForumsByUser } from './util/forums';
 
 const Forum = (props) => {
   const { history } = props;

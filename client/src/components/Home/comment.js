@@ -3,8 +3,8 @@ import { format } from 'date-fns/fp';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
-import { createComment, getComments } from '../util/comments';
-import "../css/style.css";
+import { createComment, getComments } from './util/comments';
+import '../../../src/App.css';
 
 const validateMessages = {
   required: 'Comment is required!',

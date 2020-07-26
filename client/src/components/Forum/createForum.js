@@ -2,8 +2,7 @@ import { Button, Form, Input } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useState } from 'react';
 
-import { createForum } from '../util/forums';
-import SideMenu from '../SideMenu';
+import { createForum } from './util/forums';
 
 const tailLayout = {
   wrapperCol: { offset: 8, span: 16 },

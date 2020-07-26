@@ -2,10 +2,9 @@ import { Col, Row } from 'antd';
 import { withRouter } from 'react-router-dom';
 import React, { Fragment, useEffect, useState } from 'react';
 
-import '../css/style.css';
-import { getAllForums } from '../util/forums';
+import '../../../src/App.css';
+import { getAllForums } from '../Forum/util/forums';
 import Comment from './comment';
-import SideMenu from '../SideMenu';
 
 const Forum = () => {
   const [isFetchingData, setFetchingData] = useState(true);
