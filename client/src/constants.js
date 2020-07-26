@@ -1,1 +1,1 @@
-export const SERVER_URL = 'https://codecamp-backend.herokuapp.com';
+export const SERVER_URL = 'https://localhost:5000';
