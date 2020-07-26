@@ -7,7 +7,7 @@
 
 * This app is created using Node Express for creating API (application layer), mySQL for database (data layer) and React for the front-end (presentation layer).
 
-* Deployed Link: https://codecamp-community.herokuapp.com/login
+* Deployed Link: https://codecamp-community.herokuapp.com
 
 
 **Functionality** 
